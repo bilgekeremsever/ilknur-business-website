@@ -1,0 +1,34 @@
+.topbarItems {
+  line-height: 300%;
+  display: flex;
+
+  &>* {
+    margin-right: 1rem;
+
+    &:last-child {
+      margin-right: 0;
+      margin-left: auto;
+    }
+  }
+
+  i {
+    vertical-align: middle;
+  }
+
+  .phrase {
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+
+  .phone,
+  .mail {
+    span {
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
+    }
+  }
+
+
+}
