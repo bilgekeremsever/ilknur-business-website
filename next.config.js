@@ -4,6 +4,11 @@ const nextConfig = {
   sassOptions: {
     additionalData: `@import "./styles/abstract.scss";`,
   },
+  images: {
+    // Access a remote image, but still use the built-in Next.js Image Optimization API
+    loader: "default",
+    domains: ["localhost"],
+  },
 }
 
 module.exports = nextConfig
