@@ -1,9 +1,18 @@
 .topbarItems {
-  line-height: 300%;
+  line-height: 3rem;
   display: flex;
+  font-size: .8rem;
+
+  a {
+    font-weight: $font-weight-semi-bold;
+
+    &:hover {
+      color: $secondary;
+    }
+  }
 
   &>* {
-    margin-right: 1rem;
+    margin-right: 1.5rem;
 
     &:last-child {
       margin-right: 0;
@@ -12,10 +21,15 @@
   }
 
   i {
-    vertical-align: middle;
+    color: $secondary;
+    vertical-align: baseline;
+    margin-right: .25rem;
+    font-size: .9rem;
   }
 
   .phrase {
+    font-weight: $font-weight-light;
+
     @include media-breakpoint-down(md) {
       display: none;
     }
