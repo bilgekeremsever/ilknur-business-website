@@ -6,6 +6,11 @@
   z-index: 9;
   transition: background-color .2s ease-out;
 
+  &.scrolled {
+    background-color: #fff;
+    box-shadow: 0 0 6px rgb(155 155 155 / 50%);
+  }
+
   &__body {
     height: 6rem;
     width: 100%;

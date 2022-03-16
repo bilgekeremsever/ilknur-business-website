@@ -19,8 +19,7 @@ const Header = () => {
 
   return (
     <header
-      className="header"
-      style={{ backgroundColor: scrolledHeader ? "#fff" : "transparent" }}>
+      className={`header ${scrolledHeader ? "scrolled" : ""}`}>
       <Topbar scrolledHeader={scrolledHeader} />
       <div className='header__body container'>
         <div className="header__logo">
