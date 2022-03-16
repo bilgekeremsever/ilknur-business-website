@@ -1,8 +1,12 @@
 @import "./vendor/bootstrap-components";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons";
 
+@import "./layouts/default";
+
 @import "./components/header/header";
 @import "./components/header/topbar";
 @import "./components/header/navigation";
 @import "./components/carousel";
 @import "./components/cta-area";
+
+@import "./pages/home-page";
