@@ -1,4 +1,4 @@
-import "../styles/globals.scss"
+import "../styles/main.scss"
 import App from "next/app"
 import Head from "next/head"
 import Layout from "../layout/Layout"

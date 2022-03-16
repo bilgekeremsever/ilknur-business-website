@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   sassOptions: {
-    additionalData: `@import "./styles/abstract.scss";`,
+    additionalData: `@import "./styles/abstracts/abstracts.scss";`,
   },
   images: {
     // Access a remote image, but still use the built-in Next.js Image Optimization API

@@ -1,4 +1,3 @@
-import styles from "../../styles/header/header.module.scss"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/router"
@@ -20,11 +19,11 @@ const Header = () => {
 
   return (
     <header
-      id={styles.header}
+      className="header"
       style={{ backgroundColor: scrolledHeader ? "#fff" : "transparent" }}>
       <Topbar scrolledHeader={scrolledHeader} />
-      <div className={`${styles.headerBody} container`}>
-        <div className={styles.logo}>
+      <div className='header__body container'>
+        <div className="header__logo">
           <Link href="/">
             <a>
               <Image src="/vercel.svg" alt="Vercel Logo" layout="fill" />

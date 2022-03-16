@@ -2,13 +2,13 @@
   font-size: .9rem;
   // font-weight: $font-weight-semi-bold;
 
-  &List {
+  &__list {
     list-style: none;
     margin-bottom: 0;
     padding-left: 0;
   }
 
-  &Item {
+  &__item {
     display: inline-block;
     margin-right: 2rem;
 
