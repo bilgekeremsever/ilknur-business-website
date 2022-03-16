@@ -1,0 +1,28 @@
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  transition: background-color .2s ease-out;
+}
+
+.headerBody {
+  height: 6rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    width: 100px;
+    height: 3rem;
+    position: relative;
+
+    a {
+      display: inline-block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

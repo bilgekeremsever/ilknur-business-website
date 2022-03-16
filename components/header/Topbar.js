@@ -1,12 +1,12 @@
 import styles from "../../styles/header/topbar.module.scss"
 import useGlobalContext from "../../lib/hooks/useGlobalContext"
 
-const Topbar = () => {
+const Topbar = ({scrolledHeader}) => {
   const { email, telephone, telephoneText, storeLink, storeText } =
     useGlobalContext()
 
   return (
-    <div id="topbar">
+    <div id={styles.topbar} className={scrolledHeader ? styles.heightNone : ""}>
       <div className={`container ${styles.topbarItems}`}>
         <span className={styles.phrase}>Hemen Ulaşın</span>
         <a href={`tel:${telephone}`} className={styles.phone}>

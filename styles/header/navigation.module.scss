@@ -1,0 +1,35 @@
+.navigation {
+  font-size: .9rem;
+  // font-weight: $font-weight-semi-bold;
+
+  &List {
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+  }
+
+  &Item {
+    display: inline-block;
+    margin-right: 2rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    a {
+      font-weight: $font-weight-semi-bold;
+      color: $primary;
+
+      &:hover {
+        color: $secondary;
+      }
+    }
+
+    .active {
+      color: $secondary;
+    }
+
+
+  }
+
+}
