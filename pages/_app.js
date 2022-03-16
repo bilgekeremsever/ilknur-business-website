@@ -13,6 +13,8 @@ function MyApp({ Component, pageProps }) {
         <meta charSet="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={globalData.metaDescription} />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <GlobalContextWrapper value={globalData}>
         <Layout>
