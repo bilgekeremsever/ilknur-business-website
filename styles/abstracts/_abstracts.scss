@@ -34,3 +34,5 @@ $container-max-widths: (sm: 540px,
 
 // Extra variables
 $font-weight-semi-bold: 600;
+$cta-area-height: 9rem;
+$home-page-slider-height: calc(100vh - $cta-area-height)
