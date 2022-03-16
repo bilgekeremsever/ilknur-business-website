@@ -6,6 +6,7 @@ $primary: #332859;
 $secondary: #ec4f4f;
 $body-color: #777;
 $body-bg: #f7f7f7;
+$headings-color: $primary;
 
 $link-decoration: none;
 $font-family-sans-serif: Poppins,
@@ -31,9 +32,10 @@ $container-max-widths: (sm: 540px,
 
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/mixins";
+@import "./mixins";
 
 
 // Extra variables
 $font-weight-semi-bold: 600;
 $cta-area-height: 9rem;
-$home-page-slider-height: calc(100vh - $cta-area-height)
+$home-page-slider-height: calc(100vh - $cta-area-height);

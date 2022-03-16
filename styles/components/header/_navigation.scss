@@ -3,9 +3,7 @@
   // font-weight: $font-weight-semi-bold;
 
   &__list {
-    list-style: none;
-    margin-bottom: 0;
-    padding-left: 0;
+    @include unstyled-list;
   }
 
   &__item {
