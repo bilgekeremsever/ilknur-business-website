@@ -1,0 +1,58 @@
+.cta-area {
+  height: $cta-area-height;
+  display: flex;
+  justify-content: space-between;
+  font-weight: $font-weight-semi-bold;
+  align-items: center;
+
+  a {
+    display: block;
+    line-height: $cta-area-height;
+    flex: 1 1 50%;
+    font-size: 1.5rem;
+    text-align: center;
+    background: transparent;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      height: 100%;
+      width: 0;
+      transition: width 0.2s ease-out;
+      background-color: $secondary;
+    }
+
+    &:first-child {
+      &::before {
+        right: 0;
+      }
+    }
+
+    &:last-child {
+      &::before {
+        left: 0;
+      }
+    }
+
+    &:hover {
+      &::before {
+        width: 100%;
+      }
+    }
+
+    i {
+      font-size: 2em;
+      vertical-align: middle;
+      margin-right: 1rem;
+    }
+  }
+
+  &__splitter {
+    height: 60%;
+    width: 2px;
+    background-color: $gray-400;
+  }
+}
