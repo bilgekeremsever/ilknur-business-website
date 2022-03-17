@@ -29,7 +29,7 @@ MyApp.getInitialProps = async (appContext) => {
   // calls page's `getInitialProps` and fills `appProps.pageProps`
   const appProps = await App.getInitialProps(appContext)
 
-  const globalRes = await fetchAdminPanelAPI("/global")
+  const globalRes = await (await fetchAdminPanelAPI("/global")).json()
 
   return { ...appProps, pageProps: { globalData: globalRes.data.attributes } }
 }
