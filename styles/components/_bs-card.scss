@@ -1,4 +1,11 @@
 .bs-card {
+  &.framed {
+    .card-img {
+      padding: $spacer $spacer 0;
+      height: 200px;
+    }
+  }
+
   .card {
     &-img {
       height: 250px;
@@ -6,15 +13,20 @@
       object-position: center;
     }
 
+    &-title{
+      font-weight: $font-weight-semi-bold;
+    }
+
+    &-text {
+      font-size: .875rem;
+    }
+
     &-link {
       display: block;
       text-align: right;
-      color: $body-color;
-      font-size: .9rem;
-
-      i {
-        color: $secondary;
-      }
+      color: $secondary;
+      font-size: .875rem;
+      font-weight: $font-weight-semi-bold;
     }
   }
 }

@@ -1,3 +1,19 @@
 .home-page {
-  
+  .latest-educations {
+    @include media-breakpoint-down(lg) {
+      max-width: map-get($container-max-widths, "sm");
+    }
+
+    div[class*="col"] {
+      @include media-breakpoint-down(lg) {
+        margin-bottom: 2rem;
+      }
+
+      &:last-child {
+        @include media-breakpoint-down(lg) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
 }
