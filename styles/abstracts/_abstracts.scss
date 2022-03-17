@@ -36,6 +36,9 @@ $btn-border-radius: 0;
 $btn-font-weight: 700;
 $btn-font-size: .875rem;
 
+$input-padding-y: 0.975rem;
+$input-padding-x: 1.25rem;
+
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/mixins";
 @import "./mixins";
