@@ -1,0 +1,11 @@
+$themeColor: $primary;
+
+@import "../../node_modules/swiper/swiper.scss";
+@import "../../node_modules/swiper/modules/navigation/navigation.scss";
+
+.cards-carousel {
+  h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+}

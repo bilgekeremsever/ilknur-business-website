@@ -30,6 +30,12 @@ $container-max-widths: (sm: 540px,
   xl: 1140px,
 );
 
+$btn-padding-y: 1.25rem;
+$btn-padding-x: 2rem;
+$btn-border-radius: 0;
+$btn-font-weight: 700;
+$btn-font-size: .875rem;
+
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/mixins";
 @import "./mixins";

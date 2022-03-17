@@ -1,3 +1,8 @@
 section {
   padding: 4rem 0;
+
+  &:nth-child(2n) {
+    background-color: darken($body-bg, 8);
+  }
+
 }

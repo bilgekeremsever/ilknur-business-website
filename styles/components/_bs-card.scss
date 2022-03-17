@@ -1,0 +1,20 @@
+.bs-card {
+  .card {
+    &-img {
+      height: 250px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    &-link {
+      display: block;
+      text-align: right;
+      color: $body-color;
+      font-size: .9rem;
+
+      i {
+        color: $secondary;
+      }
+    }
+  }
+}
