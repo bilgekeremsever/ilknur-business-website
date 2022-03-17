@@ -6,17 +6,20 @@ import CallbackForm from "../components/CallbackForm"
 import CardsCarousel from "../components/CardsCarousel"
 import CtaArea from "../components/CtaArea"
 import PersonFeatures from "../components/PersonFeatures"
+import { fetchAdminPanelAPI } from "../lib/adminPanelApi"
 
-export default function Home() {
+function Home({ personFeatures, sliders }) {
   return (
     <main className="home-page">
       <Head>
         <title>Ilknur Sever - Anasayfa</title>
       </Head>
-      <BsCarousel />
+      <BsCarousel sliders={sliders.data} />
       <CtaArea />
       <section>
-        <PersonFeatures />
+        {personFeatures.data && (
+          <PersonFeatures personFeatures={personFeatures.data} />
+        )}
       </section>
       <section>
         <CardsCarousel />
@@ -42,3 +45,18 @@ export default function Home() {
     </main>
   )
 }
+
+export async function getServerSideProps() {
+  const [personFeaturesRes, slidersRes] = await Promise.all([
+    fetchAdminPanelAPI("/person-features"),
+    fetchAdminPanelAPI("/sliders", { populate: "image" }),
+  ])
+
+  const [personFeatures, sliders] = await Promise.all([
+    personFeaturesRes.json(),
+    slidersRes.json(),
+  ])
+
+  return { props: { personFeatures, sliders } }
+}
+export default Home
