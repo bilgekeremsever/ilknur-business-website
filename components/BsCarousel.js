@@ -1,3 +1,4 @@
+// This is the default bootstrap carousel wrapper. e.g. homepage slider. https://react-bootstrap.github.io/components/carousel/ 
 import Image from "next/image"
 
 import { Carousel } from "react-bootstrap"
