@@ -7,13 +7,16 @@ import PersonFeatures from "../components/PersonFeatures"
 export default function Home() {
   return (
     <main>
+      <Head>
+        <title>Ilknur Sever - Anasayfa</title>
+      </Head>
       <BsCarousel />
       <CtaArea />
       <section>
         <PersonFeatures />
       </section>
 
-      <section className="home-page__products">
+      <section>
         <h2>Ürünler</h2>
       </section>
     </main>
