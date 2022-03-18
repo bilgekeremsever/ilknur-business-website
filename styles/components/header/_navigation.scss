@@ -1,14 +1,34 @@
 .navigation {
   font-size: .9rem;
-  // font-weight: $font-weight-semi-bold;
 
   &__list {
     @include unstyled-list;
+
+    @include media-breakpoint-down(lg) {
+      position: fixed;
+      top: 0;
+      right: calc($mobile-menu-width * (-1));
+      width: $mobile-menu-width;
+      height: 100vh;
+      background-color: $primary;
+      transition: right .2s ease-out;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
   }
 
   &__item {
     display: inline-block;
     margin-right: 2rem;
+
+    @include media-breakpoint-down(lg) { 
+      display: block;
+      text-align: center;
+      font-size: 2em;
+      margin-right: 0;
+    }
 
     &:last-child {
       margin-right: 0;
@@ -18,6 +38,11 @@
       font-weight: $font-weight-semi-bold;
       color: $primary;
 
+      @include media-breakpoint-down(lg) {
+        color: #fff;
+
+      }
+
       &:hover {
         color: $secondary;
       }
@@ -26,8 +51,14 @@
     .active {
       color: $secondary;
     }
-
-
   }
 
+  .toggle-nav-list {
+    display: none;
+
+    @include media-breakpoint-down(lg) {
+      display: block;
+    }
+
+  }
 }

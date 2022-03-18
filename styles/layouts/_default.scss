@@ -1,3 +1,10 @@
+.default-layout {
+  transition: transform .2s ease-out;
+  &.show-nav-list {
+    transform: translateX(calc($mobile-menu-width * (-1)));
+  }
+}
+
 section {
   padding: 4rem 0;
 

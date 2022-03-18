@@ -6,6 +6,12 @@
   z-index: 9;
   transition: background-color .2s ease-out;
 
+  @include media-breakpoint-down(lg) {
+    position: static;
+    background-color: #fff;
+    box-shadow: 0 0 6px #000;
+  }
+
   &.scrolled {
     background-color: #fff;
     box-shadow: 0 0 6px rgb(155 155 155 / 50%);

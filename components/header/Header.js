@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import Topbar from "./Topbar"
 import Navigation from "./Navigation"
 
-const Header = () => {
+const Header = ({ showNavList, setShowNavList }) => {
   const [scrolledHeader, setScrolledHeader] = useState(false)
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Header = () => {
     <header
       className={`header ${scrolledHeader ? "scrolled" : ""}`}>
       <Topbar scrolledHeader={scrolledHeader} />
-      <div className='header__body container'>
+      <div className="header__body container">
         <div className="header__logo">
           <Link href="/">
             <a>
@@ -30,7 +30,7 @@ const Header = () => {
           </Link>
         </div>
 
-        <Navigation />
+        <Navigation showNavList={showNavList} setShowNavList={setShowNavList} />
       </div>
     </header>
   )
