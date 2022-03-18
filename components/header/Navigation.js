@@ -4,6 +4,28 @@ import { useRouter } from "next/router"
 import { useState } from "react"
 
 const Navigation = ({ showNavList, setShowNavList }) => {
+  const navigationList = [
+    {
+      name: "Anasayfa",
+      path: "/",
+    },
+    {
+      name: "Hakkımda",
+      path: "/hakkimda",
+    },
+    {
+      name: "Ürünler",
+      path: "/urunler",
+    },
+    {
+      name: "Eğitim",
+      path: "/egitim",
+    },
+    {
+      name: "İletişim",
+      path: "/iletisim",
+    },
+  ]
   const router = useRouter()
 
   function toggleNavList() {
@@ -38,39 +60,20 @@ const Navigation = ({ showNavList, setShowNavList }) => {
       </button>
 
       <ul className={`navigation__list ${showNavList}`}>
-        <li className="navigation__item">
-          <Link href="/">
-            <a className={router.pathname == "/" ? "active" : ""}>Anasayfa</a>
-          </Link>
-        </li>
-        <li className="navigation__item">
-          <Link href="/hakkimda">
-            <a className={router.pathname == "/hakkimda" ? "active" : ""}>
-              Hakkımda
-            </a>
-          </Link>
-        </li>
-        <li className="navigation__item">
-          <Link href="/urunler">
-            <a className={router.pathname == "/urunler" ? "active" : ""}>
-              Ürünler
-            </a>
-          </Link>
-        </li>
-        <li className="navigation__item">
-          <Link href="/egitim">
-            <a className={router.pathname == "/egitim" ? "active" : ""}>
-              Eğitim
-            </a>
-          </Link>
-        </li>
-        <li className="navigation__item">
-          <Link href="/iletisim">
-            <a className={router.pathname == "/iletisim" ? "active" : ""}>
-              İletişim
-            </a>
-          </Link>
-        </li>
+        {navigationList.map((navigationItem) => {
+          return (
+            <li key={navigationItem.path} className="navigation__item">
+              <Link href={navigationItem.path}>
+                <a
+                  className={
+                    router.pathname == navigationItem.path ? "active" : ""
+                  }>
+                  {navigationItem.name}
+                </a>
+              </Link>
+            </li>
+          )
+        })}
       </ul>
     </nav>
   )
