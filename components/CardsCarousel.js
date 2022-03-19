@@ -11,7 +11,8 @@ const CardsCarousel = () => {
       <Swiper
         modules={[Navigation]}
         spaceBetween={50}
-        slidesPerView={3}
+        slidesPerView={1}
+        breakpoints={{ 768: { slidesPerView: 2 }, 991: { slidesPerView: 3 } }}
         navigation
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}>
