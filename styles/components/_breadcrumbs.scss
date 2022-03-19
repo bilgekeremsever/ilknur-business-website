@@ -1,5 +1,5 @@
 .breadcrumb {
-  font-size: .875rem;
+  font-size: .8rem;
   line-height: 4rem;
 
   &__list {
@@ -15,6 +15,14 @@
       :before;
       content: map-get($bootstrap-icons-map, "chevron-right");
       padding: 0 .5rem;
+    }
+
+    a {
+      color: $secondary;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
   }
