@@ -18,7 +18,7 @@
   }
 
   &__body {
-    height: 6rem;
+    height: $header-body-height;
     width: 100%;
     display: flex;
     justify-content: space-between;

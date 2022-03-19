@@ -1,5 +1,6 @@
 .default-layout {
   transition: transform .2s ease-out;
+
   &.show-nav-list {
     transform: translateX(calc($mobile-menu-width * (-1)));
   }
@@ -8,8 +9,13 @@
 section {
   padding: 4rem 0;
 
-  &:nth-child(2n) {
-    background-color: darken($body-bg, 8);
+
+  &:nth-child(odd) {
+    background-color: #f7f7f7;
+  }
+
+  &:nth-child(even) {
+    background-color: darken(#f7f7f7, 8);
   }
 
 }

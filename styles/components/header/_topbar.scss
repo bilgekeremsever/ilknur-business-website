@@ -1,6 +1,6 @@
 .topbar {
   background-color: #fff;
-  height: 3rem;
+  height: $topbar-height;
   opacity: 1;
   transition: all .2s ease-out;
   display: flex;
