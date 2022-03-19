@@ -1,0 +1,21 @@
+.breadcrumb {
+  font-size: .875rem;
+  line-height: 4rem;
+
+  &__list {
+    @include unstyled-list;
+  }
+
+  &__item {
+    display: inline-block;
+
+    &+&::before {
+      // adding an arrow before each item which is not the first one.
+      @extend .bi,
+      :before;
+      content: map-get($bootstrap-icons-map, "chevron-right");
+      padding: 0 .5rem;
+    }
+
+  }
+}
