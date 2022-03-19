@@ -1,0 +1,22 @@
+.about-page {
+  .container {}
+
+  &__image {
+    position: relative;
+    float: right;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 0 2rem 2rem;
+
+    @include media-breakpoint-down(md) {
+      float: none;
+      margin: 0 auto 2rem;
+      display: flex;
+    }
+
+  }
+
+  &__text {}
+}
