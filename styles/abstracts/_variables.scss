@@ -1,0 +1,6 @@
+$font-weight-semi-bold: 600;
+$topbar-height: 3rem;
+$header-body-height: 6rem;
+$cta-area-height: $topbar-height+$header-body-height;
+$home-page-slider-height: calc(100vh - $cta-area-height);
+$mobile-menu-width: 15rem;

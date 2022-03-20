@@ -1,4 +1,8 @@
-@import "./vendor/bootstrap-components";
+@import "./abstracts/variables";
+@import "./abstracts/mixins";
+
+
+@import "./vendor/bootstrap";
 @import "./vendor/hamburgers";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons";
 
