@@ -1,7 +1,6 @@
 import Head from "next/head"
 import Image from "next/image"
 import PageHeader from "../components/PageHeader"
-import CardsCarousel from "../components/CardsCarousel"
 import { fetchAdminPanelAPI } from "../lib/adminPanelApi"
 import Breadcrumbs from "../components/Breadcrumbs"
 import ReactMarkdown from "react-markdown"
