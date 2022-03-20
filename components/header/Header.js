@@ -10,7 +10,7 @@ const Header = ({ showNavList, setShowNavList }) => {
 
   useEffect(() => {
     const onScroll = () =>
-      setScrolledHeader(window.pageYOffset > 100 ? true : false)
+      setScrolledHeader(window.pageYOffset > 50 ? true : false)
     // clean up code
     window.removeEventListener("scroll", onScroll)
     window.addEventListener("scroll", onScroll, { passive: true })
