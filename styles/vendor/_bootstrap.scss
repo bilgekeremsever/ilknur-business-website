@@ -30,14 +30,15 @@ $container-max-widths: (sm: 540px,
   xl: 1140px,
 );
 
-$btn-padding-y: 1.25rem;
-$btn-padding-x: 2rem;
-$btn-border-radius: 0;
+$btn-link-color: #fff;
+$btn-padding-y-lg: 1.25rem;
+$btn-padding-x-lg: 2rem;
+$btn-border-radius-lg: 0;
 $btn-font-weight: 700;
-$btn-font-size: .875rem;
+$btn-font-size-lg: .875rem;
 
-$input-padding-y: 0.975rem;
-$input-padding-x: 1.25rem;
+$input-padding-y-lg: 0.975rem;
+$input-padding-x-lg: 1.25rem;
 
 @import "../../node_modules/bootstrap/scss/variables";
 @import "../../node_modules/bootstrap/scss/mixins";
@@ -57,3 +58,4 @@ $input-padding-x: 1.25rem;
 @import "../../node_modules/bootstrap/scss/card";
 @import "../../node_modules/bootstrap/scss/buttons";
 @import "../../node_modules/bootstrap/scss/forms";
+@import "../../node_modules/bootstrap/scss/dropdown";

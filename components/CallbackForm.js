@@ -52,7 +52,7 @@ const CallbackForm = () => {
               </Form.Group>
             </Row>
 
-            <Button type="submit">GÖNDER</Button>
+            <Button size="lg" type="submit">GÖNDER</Button>
           </Form>
         </div>
         <div className="col-lg-6 callback-form__image">

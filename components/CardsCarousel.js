@@ -31,7 +31,7 @@ const CardsCarousel = () => {
       </Swiper>
       <div className="text-center mt-5">
         <Link href="/">
-          <a className="btn btn-primary">Tümünü Göster</a>
+          <a className="btn btn-primary btn-lg">Tümünü Göster</a>
         </Link>
       </div>
     </div>
