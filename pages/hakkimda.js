@@ -6,7 +6,7 @@ import Breadcrumbs from "../components/Breadcrumbs"
 import ReactMarkdown from "react-markdown"
 import { getStrapiMedia } from "../lib/adminPanelApiMedia"
 
-function About({ aboutPageData }) {
+function Hakkimda({ aboutPageData }) {
   const breadcrumbs = [{ title: "Anasayfa", path: "/" }, { title: "Hakkımda" }]
   return (
     <main className="about-page">
@@ -24,7 +24,7 @@ function About({ aboutPageData }) {
               layout="fill"
             />
           </div>
-          <ReactMarkdown children={aboutPageData.attributes.body} />
+          <ReactMarkdown>{aboutPageData.attributes.body}</ReactMarkdown>
         </div>
       </section>
     </main>
@@ -37,4 +37,4 @@ export async function getServerSideProps() {
 
   return { props: { aboutPageData: aboutPageData.data } }
 }
-export default About
+export default Hakkimda

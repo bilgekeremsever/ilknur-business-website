@@ -7,7 +7,7 @@ import Breadcrumbs from "../../components/Breadcrumbs"
 import DropdownFilter from "../../components/DropdownFilter"
 import BsCard from "../../components/BsCard"
 
-function Products({ products, productTags }) {
+function Urunler({ products, productTags }) {
   const breadcrumbs = [{ title: "Anasayfa", path: "/" }, { title: "Ürünler" }]
   return (
     <main className="products-page">
@@ -61,4 +61,4 @@ export async function getServerSideProps() {
 
   return { props: { products, productTags } }
 }
-export default Products
+export default Urunler
