@@ -1,0 +1,14 @@
+.dropdown-filter {
+  
+  margin-bottom: 3rem;
+
+  .dropdown,
+  button {
+    text-align: right;
+  }
+
+  .dropdown-toggle {
+    color: #fff !important;
+    font-weight: $font-weight-normal;
+  }
+}

@@ -2,11 +2,12 @@ import Head from "next/head"
 import Image from "next/image"
 import { fetchAdminPanelAPI } from "../../lib/adminPanelApi"
 import { getStrapiMedia } from "../../lib/adminPanelApiMedia"
-import { Dropdown } from "react-bootstrap"
 import PageHeader from "../../components/PageHeader"
 import Breadcrumbs from "../../components/Breadcrumbs"
+import DropdownFilter from "../../components/DropdownFilter"
+import BsCard from "../../components/BsCard"
 
-function Products({ productsPageData }) {
+function Products({ products, productTags }) {
   const breadcrumbs = [{ title: "Anasayfa", path: "/" }, { title: "Ürünler" }]
   return (
     <main className="products-page">
@@ -16,18 +17,31 @@ function Products({ productsPageData }) {
       <PageHeader pageHeaderText="Ürünler" />
       <Breadcrumbs breadcrumbsData={breadcrumbs} />
       <section>
+        <DropdownFilter filters={productTags} />
         <div className="container">
-          <Dropdown>
-            <Dropdown.Toggle variant="primary" id="dropdown-product-tags">
-              Etiketler
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu align="end">
-              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div className="col">
+              <BsCard />
+            </div>
+            <div className="col">
+              <BsCard />
+            </div>
+            <div className="col">
+              <BsCard />
+            </div>
+            <div className="col">
+              <BsCard />
+            </div>
+            <div className="col">
+              <BsCard />
+            </div>
+            <div className="col">
+              <BsCard />
+            </div>
+            <div className="col">
+              <BsCard />
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -35,9 +49,16 @@ function Products({ productsPageData }) {
 }
 
 export async function getServerSideProps() {
-  const productsRes = await fetchAdminPanelAPI("/products", { populate: "image" })
-  const productsPageData = await productsRes.json()
+  const [productsRes, productTagsRes] = await Promise.all([
+    fetchAdminPanelAPI("/products", { populate: "image,product_tags" }),
+    fetchAdminPanelAPI("/product-tags"),
+  ])
 
-  return { props: { productsPageData: productsPageData.data } }
+  const [products, productTags] = await Promise.all([
+    productsRes.json(),
+    productTagsRes.json(),
+  ])
+
+  return { props: { products, productTags } }
 }
 export default Products
