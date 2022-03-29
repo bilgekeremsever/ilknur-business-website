@@ -1,4 +1,5 @@
 import Header from "../components/header/Header"
+import Footer from "../components/Footer"
 import { useState } from "react"
 
 const Layout = ({ children }) => {
@@ -8,6 +9,7 @@ const Layout = ({ children }) => {
     <div className={`default-layout ${showNavList}`}>
       <Header showNavList={showNavList} setShowNavList={setShowNavList} />
       {children}
+      <Footer />
     </div>
   )
 }

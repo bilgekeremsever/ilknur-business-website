@@ -1,0 +1,75 @@
+$footer-text-color: #c1c1c1;
+
+.footer {
+  background-color: $primary;
+  padding: 4rem 0;
+  color: $footer-text-color;
+
+  @include media-breakpoint-down(sm) {
+    text-align: center;
+  }
+
+  h4 {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: $font-weight-bold;
+    margin-bottom: 1.5rem;
+  }
+
+  a {
+    color: $footer-text-color;
+    display: inline-block;
+    transition: transform .2s ease-out;
+
+    &:hover {
+      color: $secondary;
+    }
+  }
+
+  &-socials a {
+    font-size: 1.25rem;
+    color: $footer-text-color;
+    margin: 0 1rem 0 0;
+
+    &:hover {
+      transform: scale(125%)
+    }
+  }
+
+  &-navigation a {
+    &::before {
+      content: '- ';
+
+      @include media-breakpoint-down(sm) {
+        content: '';
+      }
+    }
+
+    &:hover {
+      transform: translateX(.5rem);
+    }
+  }
+
+  &-brand {
+    margin-top: 1rem;
+    font-size: .8rem;
+  }
+
+  &-about,
+  &-navigation {
+    font-size: .875rem;
+    @include media-breakpoint-down(lg) {
+      margin-top: 2rem;
+    }
+
+    ul {
+      @include unstyled-list;
+
+      li {
+        margin-bottom: .5rem;
+      }
+    }
+  }
+
+
+}
