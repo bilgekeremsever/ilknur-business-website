@@ -2,6 +2,10 @@
 
 This is a repository for a business website - React/Next application.
 
+## Database Access
+
+Project requires access to a populated database. Therefore in _.env.local.example_ file; both api_url and a read-only api-token is provided. These two environment variable is enough to run the project. Copy those two variables into an _.env.local_ file to get ready.
+
 ## Resource guide
 
 Styles are bundled up, and served as global in \_app.js. [BEM](https://en.bem.info/methodology/) is used whenever possible.

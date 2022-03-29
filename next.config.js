@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     // Access a remote image, but still use the built-in Next.js Image Optimization API
     loader: "default",
-    domains: ["localhost"],
+    domains: ["localhost", "admin.ilknursever.com.tr"],
   },
 }
 
