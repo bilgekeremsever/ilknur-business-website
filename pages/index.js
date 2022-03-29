@@ -7,6 +7,7 @@ import CardsCarousel from "../components/CardsCarousel"
 import CtaArea from "../components/CtaArea"
 import PersonFeatures from "../components/PersonFeatures"
 import { fetchAdminPanelAPI } from "../lib/adminPanelApi"
+import { getStrapiMedia } from "../lib/adminPanelApiMedia"
 
 function Home({ personFeatures, sliders }) {
   return (
@@ -56,6 +57,16 @@ export async function getServerSideProps() {
     personFeaturesRes.json(),
     slidersRes.json(),
   ])
+
+  /*
+  Below, there is a modification on a constant array of objects (sliders). Since API returns relative image paths, this is necessary.
+  The property of a const object can be changed but it can not reference to a new object.
+  The values inside the const array can be changed, new items can be added but it can not reference to a new array.
+  */
+  sliders.data.forEach((slider, index) => {
+    const imageAbsolutePath = getStrapiMedia(slider.attributes.image)
+    slider.attributes.image.data.attributes.absoluteUrl = imageAbsolutePath
+  })
 
   return { props: { personFeatures, sliders } }
 }

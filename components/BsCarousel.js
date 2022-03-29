@@ -12,7 +12,7 @@ const BsCarousel = ({ sliders }) => {
           return (
             <Carousel.Item key={slider.id}>
               <Image
-                src={getStrapiMedia(slider.attributes.image)}
+                src={slider.attributes.image.data.attributes.absoluteUrl}
                 alt="slider-item"
                 layout="fill"
               />

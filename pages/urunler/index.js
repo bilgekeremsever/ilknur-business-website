@@ -59,6 +59,12 @@ export async function getServerSideProps() {
     productTagsRes.json(),
   ])
 
+  // see: /pages/index.js line 62
+  products.data.forEach((product, index) => {
+    const imageAbsolutePath = getStrapiMedia(product.attributes.image)
+    product.attributes.image.data.attributes.absoluteUrl = imageAbsolutePath
+  })
+
   return { props: { products, productTags } }
 }
 export default Urunler

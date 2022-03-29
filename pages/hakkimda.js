@@ -19,7 +19,7 @@ function Hakkimda({ aboutPageData }) {
         <div className="container">
           <div className="about-page__image">
             <Image
-              src={getStrapiMedia(aboutPageData.attributes.image)}
+              src={aboutPageData.attributes.image.data.attributes.absoluteUrl}
               alt="slider-item"
               layout="fill"
             />
@@ -34,6 +34,10 @@ function Hakkimda({ aboutPageData }) {
 export async function getServerSideProps() {
   const aboutRes = await fetchAdminPanelAPI("/about", { populate: "image" })
   const aboutPageData = await aboutRes.json()
+
+  // see: /pages/index.js line 62
+  const imageAbsolutePath = getStrapiMedia(aboutPageData.data.attributes.image)
+  aboutPageData.data.attributes.image.data.attributes.absoluteUrl = imageAbsolutePath;
 
   return { props: { aboutPageData: aboutPageData.data } }
 }
