@@ -4,7 +4,7 @@ import PageHeader from "../components/PageHeader"
 import { fetchAdminPanelAPI } from "../lib/adminPanelApi"
 import Breadcrumbs from "../components/Breadcrumbs"
 import ReactMarkdown from "react-markdown"
-import { getStrapiMedia } from "../lib/adminPanelApiMedia"
+import { setImageAbsolutePath } from "../lib/adminPanelApiMedia"
 
 function Hakkimda({ aboutPageData }) {
   const breadcrumbs = [{ title: "Anasayfa", path: "/" }, { title: "Hakkımda" }]
@@ -36,12 +36,10 @@ export async function getServerSideProps() {
   const aboutPageData = await aboutRes.json()
 
   /*
-  Below, there is a modification on a constant array of objects (sliders, products..). Since API returns relative image paths, this is necessary.
+  Below, there is a modification on a constant object. Since API returns relative image paths, this is necessary.
   Backend should be modified to return absolute path on image url fields.
   */
-  const imageAbsolutePath = getStrapiMedia(aboutPageData.data.attributes.image)
-  aboutPageData.data.attributes.image.data.attributes.absoluteUrl =
-    imageAbsolutePath
+  setImageAbsolutePath(aboutPageData.data)
   /* 
   Useful notes:
   The property of a const object can be changed but it can not reference to a new object.
