@@ -59,7 +59,10 @@ export async function getServerSideProps() {
     productTagsRes.json(),
   ])
 
-  // see: /pages/index.js line 62
+  /*
+  Below, there is a modification on a constant array of objects (sliders, products..). Since API returns relative image paths, this is necessary.
+  Backend should be modified to return absolute path on image url fields.
+  */
   products.data.forEach((product, index) => {
     const imageAbsolutePath = getStrapiMedia(product.attributes.image)
     product.attributes.image.data.attributes.absoluteUrl = imageAbsolutePath

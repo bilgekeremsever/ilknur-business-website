@@ -35,9 +35,18 @@ export async function getServerSideProps() {
   const aboutRes = await fetchAdminPanelAPI("/about", { populate: "image" })
   const aboutPageData = await aboutRes.json()
 
-  // see: /pages/index.js line 62
+  /*
+  Below, there is a modification on a constant array of objects (sliders, products..). Since API returns relative image paths, this is necessary.
+  Backend should be modified to return absolute path on image url fields.
+  */
   const imageAbsolutePath = getStrapiMedia(aboutPageData.data.attributes.image)
-  aboutPageData.data.attributes.image.data.attributes.absoluteUrl = imageAbsolutePath;
+  aboutPageData.data.attributes.image.data.attributes.absoluteUrl =
+    imageAbsolutePath
+  /* 
+  Useful notes:
+  The property of a const object can be changed but it can not reference to a new object.
+  The values inside the const array can be changed, new items can be added but it can not reference to a new array.
+  */
 
   return { props: { aboutPageData: aboutPageData.data } }
 }
