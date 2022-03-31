@@ -1,0 +1,42 @@
+.contact-page {
+  .strong-phase {
+    font-weight: 500;
+  }
+
+  .contact {
+    &-info {
+      text-align: center;
+
+      &__block {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      &__icon {
+        color: $secondary;
+        background-color: lighten($secondary, 30);
+        font-size: 3rem;
+        line-height: 5rem;
+        width: 5rem;
+        border-radius: 50%;
+      }
+
+      &__text {
+        color: $primary;
+        font-weight: $font-weight-semi-bold;
+
+        &--small {
+          margin-top: 2rem;
+          font-size: .8rem;
+          font-weight: 500;
+        }
+
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+
+    }
+  }
+}
