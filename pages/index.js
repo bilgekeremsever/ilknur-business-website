@@ -1,5 +1,6 @@
 import Head from "next/head"
 import Image from "next/image"
+import Link from "next/link"
 import BsCard from "../components/BsCard"
 import BsCarousel from "../components/BsCarousel"
 import CallbackForm from "../components/CallbackForm"
@@ -9,7 +10,8 @@ import PersonFeatures from "../components/PersonFeatures"
 import { fetchAdminPanelAPI } from "../lib/adminPanelApi"
 import { setImageAbsolutePath } from "../lib/adminPanelApiMedia"
 
-function Home({ personFeatures, sliders }) {
+function Home({ personFeatures, sliders, products, courses }) {
+  console.log(courses)
   return (
     <main className="home-page">
       <Head>
@@ -18,44 +20,57 @@ function Home({ personFeatures, sliders }) {
       <BsCarousel sliders={sliders.data} />
       <CtaArea />
       <section>
-        {personFeatures.data && (
-          <PersonFeatures personFeatures={personFeatures.data} />
-        )}
+        <PersonFeatures personFeatures={personFeatures.data} />
       </section>
       <section>
-        <CardsCarousel />
+        <CardsCarousel carouselData={products.data} />
       </section>
       <section>
         <CallbackForm />
       </section>
       <section>
-        <div className="container latest-educations">
+        <div className="container latest-courses">
+          <h2>Son Eğitim İçerikleri</h2>
           <div className="row">
-            <div className="col-lg-4">
-              <BsCard cardFrame={true} />
-            </div>
-            <div className="col-lg-4">
-              <BsCard cardFrame={true} />
-            </div>
-            <div className="col-lg-4">
-              <BsCard cardFrame={true} />
-            </div>
+            {courses.data.map((course) => (
+              <div key={course.id} className="col-lg-4">
+                <BsCard cardFrame={true} cardData={course} />
+              </div>
+            ))}
           </div>
         </div>
+        <div className="text-center mt-5">
+        <Link href="/egitim">
+          <a className="btn btn-primary btn-lg">Tümünü Göster</a>
+        </Link>
+      </div>
       </section>
     </main>
   )
 }
 
 export async function getServerSideProps() {
-  const [personFeaturesRes, slidersRes] = await Promise.all([
-    fetchAdminPanelAPI("/person-features"),
-    fetchAdminPanelAPI("/sliders", { populate: "image" }),
-  ])
+  const [personFeaturesRes, slidersRes, productsRes, coursesRes] =
+    await Promise.all([
+      fetchAdminPanelAPI("/person-features"),
+      fetchAdminPanelAPI("/sliders", { populate: "image" }),
+      fetchAdminPanelAPI("/products", {
+        populate: "image",
+        sort: ["createdAt:desc"],
+        filters: { showInHomepage: { $eq: "true" } },
+      }),
+      fetchAdminPanelAPI("/courses", {
+        populate: "image",
+        sort: ["createdAt:desc"],
+        pagination: { start: 0, limit: 3 },
+      }),
+    ])
 
-  const [personFeatures, sliders] = await Promise.all([
+  const [personFeatures, sliders, products, courses] = await Promise.all([
     personFeaturesRes.json(),
     slidersRes.json(),
+    productsRes.json(),
+    coursesRes.json(),
   ])
 
   /*
@@ -63,7 +78,9 @@ export async function getServerSideProps() {
   Backend should be modified to return absolute path on image url fields.
   */
   sliders.data.forEach((slider) => setImageAbsolutePath(slider))
+  products.data.forEach((product) => setImageAbsolutePath(product))
+  courses.data.forEach((course) => setImageAbsolutePath(course))
 
-  return { props: { personFeatures, sliders } }
+  return { props: { personFeatures, sliders, products, courses } }
 }
 export default Home

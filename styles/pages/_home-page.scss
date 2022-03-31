@@ -1,7 +1,12 @@
 .home-page {
-  .latest-educations {
+  .latest-courses {
     @include media-breakpoint-down(lg) {
       max-width: map-get($container-max-widths, "sm");
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
     }
 
     div[class*="col"] {
