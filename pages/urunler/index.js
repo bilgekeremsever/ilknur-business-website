@@ -6,9 +6,33 @@ import PageHeader from "../../components/PageHeader"
 import Breadcrumbs from "../../components/Breadcrumbs"
 import DropdownFilter from "../../components/DropdownFilter"
 import BsCard from "../../components/BsCard"
+import { useRouter } from "next/router"
+import { useEffect, useState } from "react"
 
-function Urunler({ products, productTags }) {
+function Urunler({ productTags }) {
   const breadcrumbs = [{ title: "Anasayfa", path: "/" }, { title: "Ürünler" }]
+  const router = useRouter()
+  const [products, setProducts] = useState(null)
+
+  let productFetchOptions = { populate: "image,product_tag" }
+  useEffect(() => {
+    productFetchOptions.filters = {
+      product_tag: { id: { $eq: router.query.filter } },
+    }
+    fetch("/api/list-content", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ url: "/products", options: productFetchOptions }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data)
+      })
+  }, [router.query])
+
   return (
     <main className="products-page">
       <Head>
@@ -20,27 +44,13 @@ function Urunler({ products, productTags }) {
         <DropdownFilter filters={productTags} />
         <div className="container">
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            <div className="col">
-              <BsCard />
-            </div>
-            <div className="col">
-              <BsCard />
-            </div>
-            <div className="col">
-              <BsCard />
-            </div>
-            <div className="col">
-              <BsCard />
-            </div>
-            <div className="col">
-              <BsCard />
-            </div>
-            <div className="col">
-              <BsCard />
-            </div>
-            <div className="col">
-              <BsCard />
-            </div>
+            {!products && <p>Loading...</p>}
+            {products &&
+              products.data.map((product) => (
+                <div key={product.id} className="col">
+                  <BsCard cardData={product} cardLinkPrefix="/urunler/" />
+                </div>
+              ))}
           </div>
         </div>
       </section>
@@ -49,22 +59,9 @@ function Urunler({ products, productTags }) {
 }
 
 export async function getServerSideProps() {
-  const [productsRes, productTagsRes] = await Promise.all([
-    fetchAdminPanelAPI("/products", { populate: "image,product_tags" }),
-    fetchAdminPanelAPI("/product-tags"),
-  ])
+  const productTagsRes = await fetchAdminPanelAPI("/product-tags")
+  const productTags = await productTagsRes.json()
 
-  const [products, productTags] = await Promise.all([
-    productsRes.json(),
-    productTagsRes.json(),
-  ])
-
-  /*
-  Below, there is a modification on a constant array of objects (sliders, products..). Since API returns relative image paths, this is necessary.
-  Backend should be modified to return absolute path on image url fields.
-  */
-  products.data.forEach((product) => setImageAbsolutePath(product))
-
-  return { props: { products, productTags } }
+  return { props: { productTags } }
 }
 export default Urunler
