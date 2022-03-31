@@ -1,7 +1,9 @@
 import Link from "next/link"
 import { Card, Button } from "react-bootstrap"
 
-const BsCard = ({ cardFrame, cardData }) => {
+/** @param {String} props.cardLinkPrefix A prefix to follow a subpath, e.g. '/urunler/' */
+
+const BsCard = ({ cardFrame, cardData, cardLinkPrefix }) => {
   return (
     <Card className={`bs-card ${cardFrame ? "framed" : ""}`}>
       <Card.Img
@@ -14,12 +16,28 @@ const BsCard = ({ cardFrame, cardData }) => {
         {/* <p className="card-text">
           <small className="text-muted">29.09.2021, Ilknur Sever</small>
         </p> */}
-        <Card.Title>{cardData.attributes.title}</Card.Title>
+        <Card.Title>
+          <Link
+            href={
+              cardLinkPrefix
+                ? cardLinkPrefix + cardData.attributes.slug
+                : "/" + cardData.attributes.slug
+            }>
+            <a>{cardData.attributes.title}</a>
+          </Link>
+        </Card.Title>
         <Card.Text>{cardData.attributes.description}</Card.Text>
-        <Link href={`/urunler/${cardData.attributes.slug}`}>
-          <a className="card-link">Devamını Oku</a>
-        </Link>
       </Card.Body>
+      <Card.Footer>
+        <Link
+          href={
+            cardLinkPrefix
+              ? cardLinkPrefix + cardData.attributes.slug
+              : "/" + cardData.attributes.slug
+          }>
+          <a>Devamını Oku</a>
+        </Link>
+      </Card.Footer>
     </Card>
   )
 }

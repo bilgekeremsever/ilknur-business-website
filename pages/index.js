@@ -11,7 +11,6 @@ import { fetchAdminPanelAPI } from "../lib/adminPanelApi"
 import { setImageAbsolutePath } from "../lib/adminPanelApiMedia"
 
 function Home({ personFeatures, sliders, products, courses }) {
-  console.log(courses)
   return (
     <main className="home-page">
       <Head>
@@ -23,7 +22,7 @@ function Home({ personFeatures, sliders, products, courses }) {
         <PersonFeatures personFeatures={personFeatures.data} />
       </section>
       <section>
-        <CardsCarousel carouselData={products.data} />
+        <CardsCarousel carouselData={products.data} showAllLink='/urunler/' />
       </section>
       <section>
         <CallbackForm />
@@ -34,7 +33,7 @@ function Home({ personFeatures, sliders, products, courses }) {
           <div className="row">
             {courses.data.map((course) => (
               <div key={course.id} className="col-lg-4">
-                <BsCard cardFrame={true} cardData={course} />
+                <BsCard cardFrame={true} cardData={course} cardLinkPrefix='/egitimler/' />
               </div>
             ))}
           </div>

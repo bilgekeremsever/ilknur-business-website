@@ -4,7 +4,7 @@ import BsCard from "./BsCard"
 import { Button } from "react-bootstrap"
 import Link from "next/link"
 
-const CardsCarousel = ({ carouselData }) => {
+const CardsCarousel = ({ carouselData, showAllLink }) => {
   return (
     <div className="container cards-carousel">
       <h2>Ürünler</h2>
@@ -18,12 +18,12 @@ const CardsCarousel = ({ carouselData }) => {
           carouselData.map((item) => (
             // .swiper-autoheight is a class of swiper itself. Used for equal card heights.
             <SwiperSlide className="swiper-autoheight" key={item.id}>
-              <BsCard cardData={item} />
+              <BsCard cardData={item} cardLinkPrefix={showAllLink} />
             </SwiperSlide>
           ))}
       </Swiper>
       <div className="text-center mt-5">
-        <Link href="/">
+        <Link href={showAllLink}>
           <a className="btn btn-primary btn-lg">Tümünü Göster</a>
         </Link>
       </div>

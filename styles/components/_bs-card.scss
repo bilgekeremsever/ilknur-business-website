@@ -1,4 +1,8 @@
 .bs-card {
+  a:hover {
+    text-decoration: underline;
+  }
+
   &.framed {
     .card-img {
       padding: $spacer $spacer 0;
@@ -13,7 +17,7 @@
       object-position: center;
     }
 
-    &-title{
+    &-title {
       font-weight: $font-weight-semi-bold;
     }
 
@@ -21,12 +25,14 @@
       font-size: .875rem;
     }
 
-    &-link {
-      display: block;
+    &-footer {
       text-align: right;
-      color: $secondary;
       font-size: .875rem;
       font-weight: $font-weight-semi-bold;
+
+      a {
+        color: $secondary;
+      }
     }
   }
 }
