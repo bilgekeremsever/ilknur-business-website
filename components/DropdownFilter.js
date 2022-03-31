@@ -11,10 +11,14 @@ const DropdownFilter = ({ filters }) => {
     if (e.target.nodeName != "BUTTON") return 0
 
     // Add query to route.
-    router.push({
-      pathname: router.pathname,
-      query: e.target.value && { filter: e.target.value },
-    })
+    router.push(
+      {
+        pathname: router.pathname,
+        query: e.target.value && { filter: e.target.value },
+      },
+      undefined,
+      { scroll: false }
+    )
   }
 
   return (
