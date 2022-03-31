@@ -9,15 +9,15 @@ import BsCard from "../../components/BsCard"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
-function Urunler({ productTags }) {
-  const breadcrumbs = [{ title: "Anasayfa", path: "/" }, { title: "Ürünler" }]
+function Urunler({ courseTags }) {
+  const breadcrumbs = [{ title: "Anasayfa", path: "/" }, { title: "Eğitim" }]
   const router = useRouter()
-  const [products, setProducts] = useState(null)
+  const [courses, setCourses] = useState(null)
 
-  let productFetchOptions = { populate: "image,product_tag", sort: ["createdAt:desc"] }
+  let courseFetchOptions = { populate: "image,course_tag", sort: ["createdAt:desc"] }
   useEffect(() => {
-    productFetchOptions.filters = {
-      product_tag: { id: { $eq: router.query.filter } },
+    courseFetchOptions.filters = {
+      course_tag: { id: { $eq: router.query.filter } },
     }
     fetch("/api/list-content", {
       method: "POST",
@@ -25,31 +25,31 @@ function Urunler({ productTags }) {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ url: "/products", options: productFetchOptions }),
+      body: JSON.stringify({ url: "/courses", options: courseFetchOptions }),
     })
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data)
+        setCourses(data)
       })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query])
 
   return (
-    <main className="products-page">
+    <main className="courses-page">
       <Head>
-        <title>Ilknur Sever - Ürünler</title>
+        <title>Ilknur Sever - Eğitim</title>
       </Head>
-      <PageHeader pageHeaderText="Ürünler" />
+      <PageHeader pageHeaderText="Eğitim" />
       <Breadcrumbs breadcrumbsData={breadcrumbs} />
       <section>
-        <DropdownFilter filters={productTags} />
+        <DropdownFilter filters={courseTags} />
         <div className="container">
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            {!products && <p>Loading...</p>}
-            {products &&
-              products.data.map((product) => (
-                <div key={product.id} className="col">
-                  <BsCard cardData={product} cardLinkPrefix="/urunler/" />
+            {!courses && <p>Loading...</p>}
+            {courses &&
+              courses.data.map((course) => (
+                <div key={course.id} className="col">
+                  <BsCard cardFrame cardData={course} cardLinkPrefix="/egitim/" />
                 </div>
               ))}
           </div>
@@ -60,9 +60,9 @@ function Urunler({ productTags }) {
 }
 
 export async function getServerSideProps() {
-  const productTagsRes = await fetchAdminPanelAPI("/product-tags")
-  const productTags = await productTagsRes.json()
+  const courseTagsRes = await fetchAdminPanelAPI("/course-tags")
+  const courseTags = await courseTagsRes.json()
 
-  return { props: { productTags } }
+  return { props: { courseTags } }
 }
 export default Urunler
