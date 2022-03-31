@@ -33,7 +33,7 @@ function Home({ personFeatures, sliders, products, courses }) {
           <div className="row">
             {courses.data.map((course) => (
               <div key={course.id} className="col-lg-4">
-                <BsCard cardFrame={true} cardData={course} cardLinkPrefix='/egitimler/' />
+                <BsCard cardFrame cardData={course} cardLinkPrefix='/egitim/' />
               </div>
             ))}
           </div>
