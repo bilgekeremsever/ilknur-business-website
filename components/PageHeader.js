@@ -1,7 +1,9 @@
 const PageHeader = ({ pageHeaderText }) => {
   return (
     <section className="page-header">
-      <h1>{pageHeaderText}</h1>
+      <div className="container">
+        <h1>{pageHeaderText}</h1>
+      </div>
     </section>
   )
 }
