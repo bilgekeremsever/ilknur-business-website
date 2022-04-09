@@ -5,7 +5,7 @@ import useGlobalContext from "../lib/hooks/useGlobalContext"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import { useState } from "react"
 
-function Iletisim({ aboutPageData }) {
+function Iletisim() {
   const breadcrumbs = [{ title: "Anasayfa", path: "/" }, { title: "İletişim" }]
 
   const { email, telephone, telephoneText, storeLink, storeText } =
@@ -108,7 +108,13 @@ function Iletisim({ aboutPageData }) {
             </Row>
             <Row className="mb-3">
               <Form.Group as={Col} md="12" controlId="formBody">
-                <Form.Control as="textarea" rows={5} type="text" placeholder="Mesajınız..." required />
+                <Form.Control
+                  as="textarea"
+                  rows={5}
+                  type="text"
+                  placeholder="Mesajınız..."
+                  required
+                />
               </Form.Group>
             </Row>
 
@@ -120,6 +126,14 @@ function Iletisim({ aboutPageData }) {
       </section>
     </main>
   )
+}
+
+/* 
+Force page to render server-side in order to benefit global data with contextApi from _app.js.
+getInitialProps in _app.js should run in server-side. Check related file.
+*/
+export async function getServerSideProps() {
+  return { props: {} }
 }
 
 export default Iletisim

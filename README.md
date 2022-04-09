@@ -2,9 +2,11 @@
 
 This is a repository for a business website - React/Next application.
 
+**It's a low-paced ongoing (in development phase) project. Data are still test data. Feature requests haven't been settled yet.**
+
 ## Database Access
 
-Project requires access to a populated database. Therefore in _.env.local.example_ file; both api_url and a read-only api-token is provided. These two environment variable is enough to run the project. Copy those two variables into an _.env.local_ file to get ready.
+Project requires access to a populated database. Therefore in _.env.local.example_ file; both api*url and a read-only api-token is provided. These two environment variable is enough to run the project. Copy those two variables into an *.env.local\_ file to get ready.
 
 ## Resource guide
 
