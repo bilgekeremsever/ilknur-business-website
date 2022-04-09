@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }) {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content={globalData.metaDescription} />
+        <meta name="robots" content="noindex,nofollow" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <GlobalContextWrapper value={globalData}>
